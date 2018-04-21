@@ -15,7 +15,7 @@ sys.path.append(
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'server.settings')
 django.setup()
 
-from core.models import Representative
+from core.models import CouncilMember, District
 
 def follow_url(URL):
     """
@@ -49,5 +49,10 @@ for member_block in member_blocks:
 
     # City of Dallas, why is everything labeled as a "phone"?
     primary_contact_email = contact_soup.select_one('.phone').text
-    rep = Representative(name=council_member_name, email=primary_contact_email)
+
+    # Link this council member to their respective council
+    district = District.objects.get(number=district_num)
+    print(district)
+
+    rep = CouncilMember(name=council_member_name, email=primary_contact_email, district=district)
     rep.save()
