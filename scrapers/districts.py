@@ -3,7 +3,6 @@ import sys
 import os
 import django
 from pprint import pprint
-districts = None
 
 sys.path.append(
     os.path.realpath(
