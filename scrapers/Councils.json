@@ -1941,7 +1941,8 @@
                 "COUNCILPER": "Scott Griggs",
                 "COMMENTS": "Inaugurated 2017-06-19",
                 "SHAPE_Leng": 88541.3042539,
-                "SHAPE_Area": 343352603.892
+                "SHAPE_Area": 343352603.892,
+				"POPULATION": 80101
             }
         },
         {
@@ -8028,7 +8029,8 @@
                 "COUNCILPER": "Adam Medrano",
                 "COMMENTS": "Inaugurated 2017-06-19",
                 "SHAPE_Leng": 234255.365431,
-                "SHAPE_Area": 514003528.44
+                "SHAPE_Area": 514003528.44,
+				"POPULATION": 70643
             }
         },
         {
@@ -15667,7 +15669,8 @@
                 "COUNCILPER": "Casey Thomas, II",
                 "COMMENTS": "Inaugurated 2017-06-19",
                 "SHAPE_Leng": 363222.338485,
-                "SHAPE_Area": 1411185091.53
+                "SHAPE_Area": 1411185091.53,
+				"POPULATION": 98943
             }
         },
         {
@@ -17746,7 +17749,8 @@
                 "COUNCILPER": "Dwaine R. Caraway",
                 "COMMENTS": "Inaugurated 2017-06-19",
                 "SHAPE_Leng": 119105.550747,
-                "SHAPE_Area": 573529533.794
+                "SHAPE_Area": 573529533.794,
+				"POPULATION": 85671
             }
         },
         {
@@ -20657,7 +20661,8 @@
                 "COUNCILPER": "Rickey D. Callahan",
                 "COMMENTS": "Inaugurated 2017-06-19",
                 "SHAPE_Leng": 122534.440932,
-                "SHAPE_Area": 511796255.048
+                "SHAPE_Area": 511796255.048,
+				"POPULATION": 89740
             }
         },
         {
@@ -36668,7 +36673,8 @@
                 "COUNCILPER": "Omar Narvaez",
                 "COMMENTS": "Inaugurated 2017-06-19",
                 "SHAPE_Leng": 454785.614786,
-                "SHAPE_Area": 1132714417.52
+                "SHAPE_Area": 1132714417.52,
+				"POPULATION": 74328
             }
         },
         {
@@ -41371,7 +41377,8 @@
                 "COUNCILPER": "Kevin Felder",
                 "COMMENTS": "Inaugurated 2017-06-19",
                 "SHAPE_Leng": 209464.644948,
-                "SHAPE_Area": 738097786.097
+                "SHAPE_Area": 738097786.097,
+				"POPULATION": 74666
             }
         },
         {
@@ -46314,7 +46321,8 @@
                 "COUNCILPER": "Tennell Atkins",
                 "COMMENTS": "Inaugurated 2017-06-19",
                 "SHAPE_Leng": 339121.71319,
-                "SHAPE_Area": 1537652460.95
+                "SHAPE_Area": 1537652460.95,
+				"POPULATION": 96643
             }
         },
         {
@@ -50605,7 +50613,8 @@
                 "COUNCILPER": "Adam McGough",
                 "COMMENTS": "Inaugurated 2017-06-19",
                 "SHAPE_Leng": 108025.983823,
-                "SHAPE_Area": 444778736.463
+                "SHAPE_Area": 444778736.463,
+				"POPULATION": 79588
             }
         },
         {
@@ -54176,7 +54185,8 @@
                 "COUNCILPER": "Lee Kleinman",
                 "COMMENTS": "Inaugurated 2017-06-19",
                 "SHAPE_Leng": 142316.713289,
-                "SHAPE_Area": 461087978.832
+                "SHAPE_Area": 461087978.832,
+				"POPULATION": 85192
             }
         },
         {
@@ -59739,7 +59749,8 @@
                 "COUNCILPER": "Jennifer Staubach Gates",
                 "COMMENTS": "Inaugurated 2017-06-19",
                 "SHAPE_Leng": 198681.533746,
-                "SHAPE_Area": 642402704.745
+                "SHAPE_Area": 642402704.745,
+				"POPULATION": 80878
             }
         },
         {
@@ -63502,7 +63513,8 @@
                 "COUNCILPER": "Philip T. Kingston",
                 "COMMENTS": "Inaugurated 2017-06-19",
                 "SHAPE_Leng": 151714.871953,
-                "SHAPE_Area": 312428177.195
+                "SHAPE_Area": 312428177.195,
+				"POPULATION": 98743
             }
         },
         {
@@ -99365,7 +99377,8 @@
                 "COUNCILPER": "Mark Clayton",
                 "COMMENTS": "Inaugurated 2017-06-19",
                 "SHAPE_Leng": 733958.74818,
-                "SHAPE_Area": 1704515548.31
+                "SHAPE_Area": 1704515548.31,
+				"POPULATION": 88076
             }
         },
         {
@@ -101656,7 +101669,8 @@
                 "COUNCILPER": "Sandy Greyson",
                 "COMMENTS": "Inaugurated 2017-06-19",
                 "SHAPE_Leng": 107979.169765,
-                "SHAPE_Area": 390286097.438
+                "SHAPE_Area": 390286097.438,
+				"POPULATION": 94604
             }
         }
     ]
