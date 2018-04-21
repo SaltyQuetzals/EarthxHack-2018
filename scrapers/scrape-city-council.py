@@ -41,13 +41,13 @@ for member_block in member_blocks:
         'span').text.strip().rsplit(' ', 1)[1]
     district_num = district_num.replace(u'\u200b', '')
     district_num = int(district_num)
-    council_member_name = member_block.select_one('h2')
+    council_member_name = member_block.select_one('h2').text
 
     # Get representatives' contact information
     contact_html = follow_url(link)
     contact_soup = BeautifulSoup(contact_html, 'html.parser')
 
     # City of Dallas, why is everything labeled as a "phone"?
-    primary_contact_email = contact_soup.select_one('.phone')
+    primary_contact_email = contact_soup.select_one('.phone').text
     rep = Representative(name=council_member_name, email=primary_contact_email)
-    print(rep)
+    rep.save()
