@@ -1,0 +1,18 @@
+{
+	"districts": [
+		{"district":1, "area":343352603.892},
+		{"district":2, "area":514003528.44},
+		{"district":3, "area":1411185091.53},
+		{"district":4, "area":573529533.794},
+		{"district":5, "area":511796255.048},
+		{"district":6, "area":1132714417.52},
+		{"district":7, "area":738097786.097},
+		{"district":8, "area":1537652460.95},
+		{"district":9, "area":1704515548.31},
+		{"district":10, "area":444778736.463},
+		{"district":11, "area":461087978.832},
+		{"district":12, "area":390286097.438},
+		{"district":13, "area":642402704.745},
+		{"district":14, "area":312428177.195}		
+	]
+}
