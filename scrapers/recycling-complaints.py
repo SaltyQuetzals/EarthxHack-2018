@@ -27,7 +27,10 @@ for complaint in complaints:
     district = District.objects.get(number=complaint['city_council_district'])
     created_date = parse(complaint['created_date'])
     closed_date = parse(complaint['closed_date'])
-    print(closed_date - created_date)
+    if closed_date < created_date:
+        created_date, closed_date = closed_date, created_date
+    duration = closed_date - created_date
+    print(duration.total_seconds()/3600)
     x_coord = complaint['x_coordinate']
     y_coord = complaint['y_coordinate']
     
