@@ -257,6 +257,17 @@ header h1 {
 	visibility: visible;
 	opacity: 1;
 }
+#details .district a {
+	color: white;
+	background: #cb429f;
+	padding: 10px;
+	display: block;
+	text-align: center;
+	margin-top: 10px;
+	text-decoration: none;
+	border-radius: 3px;
+	line-height: 1;
+}
 #app.nodetails h1 {
 	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0, 0, 0, 0.5);
 	color: white;
