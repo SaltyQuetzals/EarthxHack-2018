@@ -1,0 +1,263 @@
+html,
+body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+body,
+#app,
+header,
+#loader {
+	min-width: 660px;
+}
+html,
+body,
+input,
+button {
+	font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+	font-size: 16px;
+}
+header {
+	position: absolute;
+	z-index: 3;
+	top: 3px;
+	left: 0;
+	font-size: 0;
+	display: flex;
+	align-items: center;
+	width: 100%;
+}
+header h1,
+header #search {
+	padding: 10px;
+	margin: 0;
+}
+header h1 {
+	font-size: 20px;
+	padding-right: 0;
+	color: #cb429f;
+	transition: all 0.2s ease-in-out;
+	min-width: 470px;
+	will-change: min-width, color, text-shadow;
+}
+#search {
+	display: block;
+	flex: 1;
+}
+#search input {
+	background: white;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	box-shadow: 0 2px 7px rgba(0, 0, 0, 0.2);
+	border-radius: 5px;
+	padding: 10px;
+	width: 100%;
+	box-sizing: border-box;
+	outline: none;
+	transition: all 0.3s ease-in-out;
+}
+#search input:focus {
+	border-color: rgba(0, 0, 0, 0.4);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+#loader {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	background: #cb429f;
+	height: 5px;
+	z-index: 3;
+	transition: all 0.3s ease-in-out;
+}
+#loader div {
+	height: 100%;
+	background: #690375;
+	width: 50%;
+	background: linear-gradient(90deg, rgba(44, 14, 55, 0) 0%, #2c0e37 100%);
+	transform: translateX(100%);
+	animation: move 1s linear infinite;
+}
+@keyframes move {
+	from {
+		transform: translateX(-100%);
+	}
+	to {
+		transform: translateX(200%);
+	}
+}
+#loader.loaded {
+	transform: translateY(-2px);
+}
+#loader.loaded div {
+	display: none;
+}
+#map {
+	height: 100%;
+	z-index: 1;
+}
+#details {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	z-index: 2;
+	padding: 5px 10px 10px 10px;
+	background: white;
+	width: 460px;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+	transition: all 0.2s ease-in-out;
+	will-change: transform;
+}
+#details .close {
+	padding: 10px;
+	text-align: right;
+	font-size: 2em;
+	line-height: 1;
+}
+#details .address h2,
+#details .address span,
+#details .more,
+#details .loader {
+	transition: all 0.3s ease-in-out;
+	will-change: transform, opacity;
+}
+#details .graph {
+	display: flex;
+	height: 100px;
+	margin-right: -5px;
+}
+#details .graph > div {
+	background: #cb429f;
+	flex: 1;
+	margin-right: 5px;
+	margin-top: auto;
+	height: 0;
+	transform-origin: bottom;
+	transform: scaleY(0);
+}
+#details .graph > div:nth-child(1) {
+	transition-delay: 0.03s;
+}
+#details .graph > div:nth-child(2) {
+	transition-delay: 0.06s;
+}
+#details .graph > div:nth-child(3) {
+	transition-delay: 0.09s;
+}
+#details .graph > div:nth-child(4) {
+	transition-delay: 0.12s;
+}
+#details .graph > div:nth-child(5) {
+	transition-delay: 0.15s;
+}
+#details .graph > div:nth-child(6) {
+	transition-delay: 0.18s;
+}
+#details .graph > div:nth-child(7) {
+	transition-delay: 0.21s;
+}
+#details .graph > div:nth-child(8) {
+	transition-delay: 0.24s;
+}
+#details .graph > div:nth-child(9) {
+	transition-delay: 0.27s;
+}
+#details .graph > div:nth-child(10) {
+	transition-delay: 0.3s;
+}
+#details .graph > div:nth-child(11) {
+	transition-delay: 0.33s;
+}
+#details .graph > div:nth-child(12) {
+	transition-delay: 0.36s;
+}
+#details.hasgraph .graph div {
+	transition: all 0.3s ease-in-out;
+	transform: scaleY(1);
+}
+#details .address h2 {
+	margin: 10px 0 0 0;
+	font-size: 3em;
+	transform: translateY(120%);
+}
+#details .address .cover {
+	background: white;
+	position: absolute;
+	z-index: 2;
+	height: 200px;
+	width: 460px;
+}
+#details .address span {
+	padding: 10px 0 1em 0;
+	display: block;
+	position: relative;
+	z-index: 3;
+	opacity: 0;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	font-size: 0.8em;
+}
+#details.hasaddr .address h2 {
+	transform: none;
+}
+#details.hasaddr .address span {
+	opacity: 0.5;
+}
+#details .more {
+	position: relative;
+	z-index: 3;
+	opacity: 0;
+}
+#details .more > div {
+	margin-top: 1em;
+}
+#details .more > div strong {
+	font-size: 2.4em;
+	font-weight: 700;
+	display: block;
+	text-transform: uppercase;
+}
+#details .more > div span {
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	font-size: 0.8em;
+	display: block;
+}
+#details.hasinfo .more {
+	opacity: 1;
+}
+#details .loader {
+	border: 2px solid transparent;
+	border-top-color: inherit;
+	border-radius: 99px;
+	width: 30px;
+	height: 30px;
+	margin: 2em auto;
+	animation: spin 1s linear infinite;
+	visibility: hidden;
+	opacity: 0;
+}
+@keyframes spin {
+	from {
+		transform: rotateZ(0);
+	}
+	to {
+		transform: rotateZ(360deg);
+	}
+}
+#details.stillloading .loader {
+	visibility: visible;
+	opacity: 1;
+}
+#app.nodetails h1 {
+	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0, 0, 0, 0.5);
+	color: white;
+	min-width: 0;
+}
+#app.nodetails #details {
+	transform: translateX(-100%) translateX(-40px);
+}
+h1,
+.close {
+	cursor: pointer;
+}
