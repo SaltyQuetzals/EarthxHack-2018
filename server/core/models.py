@@ -1,18 +1,21 @@
 from django.db import models
 
 # Create your models here.
+
+
 class ProximityManager(models.Manager):
-    def get_queryset(self):
-        longitude = self.kwargs['long']
-        latitude = self.kwargs['lat']
-        min_latitude = latitude - 0.015
-        max_latitude = latitude + 0.015
+    def close_proximity(self, latitude, longitude):
+        longitude, latitude = float(longitude), float(latitude)
+        min_latitude = latitude - 0.030
+        max_latitude = latitude + 0.030
 
-        min_longitude = longitude - 0.0167
-        max_longitude = longitude + 0.0167
+        min_longitude = longitude - 0.0334
+        max_longitude = longitude + 0.0334
 
-        queryset = super(ProximityManager, self).get_queryset(longitude__range=[min_longitude, max_longitude], latitude__range=[min_latitude, max_latitude])
+        queryset = super(ProximityManager, self).get_queryset().filter(longitude__gte=min_longitude,
+                                                                       longitude__lte=max_longitude, latitude__gte=min_latitude, latitude__lte=max_latitude)
         return queryset
+
 
 class District(models.Model):
     number = models.IntegerField(primary_key=True)
@@ -44,6 +47,8 @@ class RecyclingComplaint(models.Model):
         District, on_delete=models.CASCADE, related_name='recycling_complaints')
     score = models.DecimalField(max_digits=20, decimal_places=10)
 
+    objects = ProximityManager()
+
 
 class GarbageComplaint(models.Model):
     created_date = models.DateField(
@@ -55,3 +60,5 @@ class GarbageComplaint(models.Model):
     district = models.ForeignKey(
         District, on_delete=models.CASCADE, related_name='garbage_complaints')
     score = models.DecimalField(max_digits=20, decimal_places=10)
+
+    objects = ProximityManager()

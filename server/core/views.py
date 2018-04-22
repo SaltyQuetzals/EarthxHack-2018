@@ -6,15 +6,29 @@ from rest_framework import generics
 
 
 class GarbageComplaintView(generics.ListAPIView):
+    """
+    Collects and returns all of the garbage 
+    complaints that have occurred within a 
+    2-mile radius.
+    """
     serializer_class = GarbageComplaintSerializer
-    
-    
+
     def get_queryset(self):
-        latitude = self.kwargs['lat']
         longitude = self.kwargs['long']
-        queryset = GarbageComplaint.objects.filter(latitude)
+        latitude = self.kwargs['lat']
+        return GarbageComplaint.objects.close_proximity(latitude, longitude)
+
 
 class RecyclingComplaintView(generics.ListAPIView):
+    """
+    Collects and returns all of the recycling 
+    complaints that have occurred within a 
+    2-mile radius.
+    """
     serializer_class = RecyclingComplaintSerializer
     queryset = RecyclingComplaint.objects.all()
 
+    def get_queryset(self):
+        longitude = self.kwargs['long']
+        latitude = self.kwargs['lat']
+        return RecyclingComplaint.objects.close_proximity(latitude, longitude)
