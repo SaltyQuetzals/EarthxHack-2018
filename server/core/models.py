@@ -6,11 +6,11 @@ from django.db import models
 class ProximityManager(models.Manager):
     def close_proximity(self, latitude, longitude):
         longitude, latitude = float(longitude), float(latitude)
-        min_latitude = latitude - 0.030
-        max_latitude = latitude + 0.030
+        min_latitude = latitude - 0.015
+        max_latitude = latitude + 0.015
 
-        min_longitude = longitude - 0.0334
-        max_longitude = longitude + 0.0334
+        min_longitude = longitude - 0.0167
+        max_longitude = longitude + 0.0167
 
         queryset = super(ProximityManager, self).get_queryset().filter(longitude__gte=min_longitude,
                                                                        longitude__lte=max_longitude, latitude__gte=min_latitude, latitude__lte=max_latitude)
