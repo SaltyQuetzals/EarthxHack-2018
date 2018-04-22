@@ -11,13 +11,13 @@ class CouncilMemberSerializer(serializers.ModelSerializer):
 class RecyclingComplaintSerializer(serializers.ModelSerializer):
     class Meta:
         model = RecyclingComplaint
-        fields = ('latitude', 'longitude', 'score')
+        fields = ('created_date', 'closed_date', 'latitude', 'longitude', 'score')
 
 
 class GarbageComplaintSerializer(serializers.ModelSerializer):
     class Meta:
         model = GarbageComplaint
-        fields = ('latitude', 'longitude', 'score')
+        fields = ('created_date', 'closed_date', 'latitude', 'longitude', 'score')
 
 
 class DistrictSerializer(serializers.ModelSerializer):
