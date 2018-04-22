@@ -22,10 +22,6 @@ class GarbageComplaintSerializer(serializers.ModelSerializer):
 
 class DistrictSerializer(serializers.ModelSerializer):
     council_member = CouncilMemberSerializer(many=False, read_only=True)
-    garbage_complaints = GarbageComplaintSerializer(many=True, read_only=True)
-    recycling_complaints = RecyclingComplaintSerializer(
-        many=True, read_only=True)
-
     class Meta:
         model = District
         fields = ('number', 'area', 'population', 'council_member',

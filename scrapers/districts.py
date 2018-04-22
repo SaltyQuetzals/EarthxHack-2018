@@ -1,8 +1,10 @@
 import json
-import sys
 import os
-import django
+import sys
 from pprint import pprint
+from django.db import transaction
+
+import django
 
 sys.path.append(
     os.path.realpath(
@@ -14,11 +16,15 @@ django.setup()
 
 from core.models import District
 
-features = json.load(open('./scrapers/Councils.json', 'r'))['features']
-for feature in features:
-    properties = feature['properties']
-    number = int(properties['DISTRICT'])
-    area = float(properties['SHAPE_Area'])
-    population = int(properties['POPULATION'])
-    district = District(number=number, area=area, population=population)
-    district.save()
+@transaction.atomic
+def collect():
+    features = json.load(open('./scrapers/Councils.json', 'r'))['features']
+    for feature in features:
+        properties = feature['properties']
+        number = int(properties['DISTRICT'])
+        area = float(properties['SHAPE_Area'])
+        population = int(properties['POPULATION'])
+        district = District(number=number, area=area, population=population)
+        district.save()
+
+collect()

@@ -31,7 +31,6 @@ class CouncilMember(models.Model):
     email = models.EmailField(max_length=256, null=True)
     district = models.ForeignKey(
         District, on_delete=models.CASCADE, related_name='council_member')
-
     class Meta:
         ordering = ('name',)
 

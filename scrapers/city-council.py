@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import sys
 import os
 import django
+from django.db import transaction
 
 ROOT_URL = 'http://dallascityhall.com/'
 URL = 'http://dallascityhall.com/government/Pages/city-council.aspx'
