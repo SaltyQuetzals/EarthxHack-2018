@@ -34,7 +34,7 @@ L.control.zoom({
 var rainbow = new Rainbow();
 rainbow.setSpectrum('#2c0e37', '#690375', '#cb429f');
 
-var districts, districtBoundingBox;
+var districts, districtBoundingBox, hasClickedDistrict = false;
 function haha(data) {
 	districts = L.geoJSON(null, {
 		style: function(feature) {
@@ -47,6 +47,7 @@ function haha(data) {
 		},
 		onEachFeature: function(feature, layer) {
 			layer.on("click", function() {
+				hasClickedDistrict = true;
 				setTimeout(function() {
 					details.find(".district strong").text("District "+layer.feature.properties.DISTRICT);
 					details.find(".district span").text("Represented by "+layer.feature.properties.COUNCILPER);
@@ -87,8 +88,8 @@ function complete(all) {
 }
 
 loading();
-$("body").append("<script src='https://loud.red/24d3df/Councils.json'>");
-$("body").append("<script src='https://loud.red/99cf43/new.json'>");
+$("body").append("<script src='/static/Councils.json'>");
+$("body").append("<script src='/static/new.json'>");
 
 details.find(".close").click(function() {
 	$("#app").addClass("nodetails");
@@ -119,7 +120,7 @@ $("#search").submit(function(e) {
 });
 
 map.on("click", function(e) {
-	if (!isInside(e.latlng.lat, e.latlng.lng)) return;
+	if (!isInside(e.latlng.lat, e.latlng.lng) || !hasClickedDistrict) return;
 	loading();
 	var loc = {
 		lat: e.latlng.lat,
@@ -139,6 +140,7 @@ map.on("click", function(e) {
 		},
 		success: doneOSTnominatim
 	});
+	hasClickedDistrict = false;
 });
 
 var startedTransitionAt = 0, finishLoadingAnimations = {}, pendingSnippets = 0;
@@ -148,6 +150,7 @@ function prepDetails() {
 	for (ani in finishLoadingAnimations) {
 		clearTimeout(finishLoadingAnimations[ani]);
 	}
+	for (var i = 0; i < chartData.length; i++) chartData[i] = 0;
 	details.find(".graph div").css("height", 0);
 	finishLoadingAnimations["still"] = setTimeout(function() {
 		details.addClass("stillloading");
@@ -166,9 +169,9 @@ function revealDetails(type) {
 				if (chartData[i] > max) max = chartData[i];
 			}
 			if (max == 0) {
-				details.find(".graph").hide();
+				details.find(".distribution").hide();
 			} else {
-				details.find(".graph").show();
+				details.find(".distribution").show();
 				for (var i = 0; i < chartData.length; i++) {
 					details.find(".graph div:eq("+i+")").css("height", chartData[i]/max*100+"%");
 				}
@@ -231,8 +234,13 @@ function doneOSTnominatim(response) {
 				revealDetails("info");
 			}
 		});
+		revealDetails("addr");
+		complete();
+		return;
 	}
 	revealDetails("addr");
+	pendingSnippets = 1;
+	revealDetails("info");
 	complete();
 }
 

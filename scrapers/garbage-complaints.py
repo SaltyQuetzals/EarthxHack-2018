@@ -3,6 +3,7 @@ import sys
 from datetime import timedelta
 from pprint import pprint
 from urllib.parse import quote
+from tqdm import tqdm
 
 import django
 import matplotlib.pyplot as plt
@@ -27,7 +28,7 @@ r = requests.get(API_URL)
 r.raise_for_status()
 complaints = r.json()
 scores = []
-for complaint in complaints:
+for complaint in tqdm(complaints):
     if 'config_location_value' not in complaint:
         continue
     district = District.objects.get(number=complaint['config_location_value'])
@@ -57,9 +58,13 @@ for complaint in complaints:
             address, GOOGLE_API_KEY)
         r = requests.get(GOOGLE_URL)
         r.raise_for_status()
-        geocoded_json = r.json()['results'][0]
-        latitude, longitude = geocoded_json['geometry']['location'][
-            'lat'], geocoded_json['geometry']['location']['lng']
+        if len(r.json()['results']) > 0:
+            geocoded_json = r.json()['results'][0]
+            latitude, longitude = geocoded_json['geometry']['location'][
+                'lat'], geocoded_json['geometry']['location']['lng']
+        else:
+            print("Your Google Maps API key probably became rate limited, stopping...")
+            continue
     score = calculate_score(created_date, closed_date,
                             district.area, district.population)
     if score > 10:
@@ -69,13 +74,13 @@ for complaint in complaints:
                          district=district, latitude=latitude, longitude=longitude, score=score)
     c.save()
 
-n, bins, patches = plt.hist(scores, bins=int(len(scores)**(1/2)))
-mean = sum(scores)/len(scores)
-sd = (sum([(x_i - mean)**2 for x_i in scores])/len(scores))**(1/2)
-normalization_factor = max(scores)/(len(scores)**(1/2))
-print('min =', min(scores))
-print('max =', max(scores))
-print('mean =', mean)
-print('sd =', sd)
-print('normalization_factor =', normalization_factor)
-plt.show()
+# n, bins, patches = plt.hist(scores, bins=int(len(scores)**(1/2)))
+# mean = sum(scores)/len(scores)
+# sd = (sum([(x_i - mean)**2 for x_i in scores])/len(scores))**(1/2)
+# normalization_factor = max(scores)/(len(scores)**(1/2))
+# print('min =', min(scores))
+# print('max =', max(scores))
+# print('mean =', mean)
+# print('sd =', sd)
+# print('normalization_factor =', normalization_factor)
+# plt.show()

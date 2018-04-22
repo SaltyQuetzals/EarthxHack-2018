@@ -3,6 +3,7 @@ import sys
 from datetime import timedelta
 from pprint import pprint
 from urllib.parse import quote
+from tqdm import tqdm
 
 import django
 import requests
@@ -25,7 +26,10 @@ API_URL = 'https://www.dallasopendata.com/resource/mky5-34gc.json?$limit=20000'
 r = requests.get(API_URL)
 complaints = r.json()
 
-for complaint in complaints:
+for complaint in tqdm(complaints):
+    if 'city_council_district' not in complaint:
+        continue
+
     district = District.objects.get(number=complaint['city_council_district'])
 
     created_date = parse(complaint['created_date'])
@@ -46,9 +50,13 @@ for complaint in complaints:
         GOOGLE_URL = 'https://maps.googleapis.com/maps/api/geocode/json?address=%s&key=%s' % (
             complaint['lat_long_location_address'], GOOGLE_API_KEY)
         r = requests.get(GOOGLE_URL)
-        geocoded_json = r.json()['results'][0]
-        latitude, longitude = geocoded_json['geometry']['location'][
-            'lat'], geocoded_json['geometry']['location']['lng']
+        if len(r.json()['results']) > 0:
+            geocoded_json = r.json()['results'][0]
+            latitude, longitude = geocoded_json['geometry']['location'][
+                'lat'], geocoded_json['geometry']['location']['lng']
+        else:
+            print("Your Google Maps API key probably became rate limited, stopping...")
+            break
     score = calculate_score(created_date, closed_date, district.area, district.population)
     if score > 10:
         continue
