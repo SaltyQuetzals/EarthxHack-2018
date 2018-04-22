@@ -1,5 +1,5 @@
-# Dallas.Trash
-For EarthxHack 2018
+# EcoPulse
+For EarthxHack 2018: https://devpost.com/software/ecopulse
 
 ![Screencap of demo](https://raw.githubusercontent.com/SaltyQuetzals/EarthxHack-2018/master/screencap.gif)
 
