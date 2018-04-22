@@ -1,7 +1,18 @@
 from django.db import models
 
 # Create your models here.
+class ProximityManager(models.Manager):
+    def get_queryset(self):
+        longitude = self.kwargs['long']
+        latitude = self.kwargs['lat']
+        min_latitude = latitude - 0.015
+        max_latitude = latitude + 0.015
 
+        min_longitude = longitude - 0.0167
+        max_longitude = longitude + 0.0167
+
+        queryset = super(ProximityManager, self).get_queryset(longitude__range=[min_longitude, max_longitude], latitude__range=[min_latitude, max_latitude])
+        return queryset
 
 class District(models.Model):
     number = models.IntegerField(primary_key=True)
