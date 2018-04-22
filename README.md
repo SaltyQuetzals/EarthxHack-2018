@@ -1,6 +1,8 @@
 # Dallas.Trash
 For EarthxHack 2018
 
+![Screencap of demo](https://raw.githubusercontent.com/SaltyQuetzals/EarthxHack-2018/master/screencap.gif)
+
 # Prerequisites
 * Install python-virtualenv
 * Add API_KEY.txt to the scrapers/ folder with a [Google Maps API key](https://developers.google.com/maps/documentation/javascript/get-api-key)
