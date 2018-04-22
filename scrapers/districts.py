@@ -19,5 +19,6 @@ for feature in features:
     properties = feature['properties']
     number = int(properties['DISTRICT'])
     area = float(properties['SHAPE_Area'])
-    district = District(number=number, area=area)
+    population = int(properties['POPULATION'])
+    district = District(number=number, area=area, population=population)
     district.save()
