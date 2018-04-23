@@ -1,5 +1,6 @@
 # EcoPulse
-For EarthxHack 2018: https://devpost.com/software/ecopulse
+For EarthxHack 2018: https://devpost.com/software/ecopulse  
+UI demo: https://codepen.io/jaflo/full/MGayZy/
 
 ![Screencap of demo](https://raw.githubusercontent.com/SaltyQuetzals/EarthxHack-2018/master/screencap.gif)
 
@@ -28,4 +29,5 @@ python scrapers/recycling-complaints.py
 1. Open [this page in your browser](http://localhost:8000/static/index.html)
 
 ## Todo
-1. Proper checks for search returning out of district results
+* Proper checks for search returning out of district results
+* Update district information on typed input (works on click)
